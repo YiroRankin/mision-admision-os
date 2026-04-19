@@ -1,6 +1,5 @@
 :root {
   --bg: #081a3a;
-  --bg-soft: #0d244f;
   --surface: #0f2a59;
   --surface-soft: #133163;
   --border: rgba(255, 255, 255, 0.1);
@@ -117,7 +116,6 @@ a {
 }
 
 .topbar__nav a,
-.area-card__link,
 .resource-link {
   color: var(--text-primary);
   text-decoration: none;
@@ -137,8 +135,6 @@ a {
 
 .hero,
 .section,
-.resource-group,
-.quick-card,
 .area-card,
 .resource-card {
   border: 1px solid var(--border);
@@ -146,19 +142,12 @@ a {
 }
 
 .hero {
-  position: relative;
-  min-height: 360px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   padding: 32px;
   border-radius: 28px;
   background: linear-gradient(180deg, rgba(16, 42, 89, 0.96), rgba(10, 33, 72, 0.96));
-}
-
-.hero__backdrop,
-.orbit,
-.glow {
-  display: none;
 }
 
 .hero__content {
@@ -190,9 +179,7 @@ a {
 .hero__description,
 .section-heading__text,
 .area-card__description,
-.resource-group__description,
-.resource-card__description,
-.quick-card p {
+.resource-card__description {
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -210,7 +197,8 @@ a {
 }
 
 .primary-button,
-.secondary-button {
+.secondary-button,
+.area-card__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +210,8 @@ a {
   cursor: pointer;
 }
 
-.primary-button {
+.primary-button,
+.area-card__button {
   border: 0;
   color: var(--text-primary);
   background: var(--accent);
@@ -238,6 +227,8 @@ a {
 .primary-button:focus-visible,
 .secondary-button:hover,
 .secondary-button:focus-visible,
+.area-card__button:hover,
+.area-card__button:focus-visible,
 .resource-link:not(.is-disabled):hover,
 .resource-link:not(.is-disabled):focus-visible {
   opacity: 0.92;
@@ -268,19 +259,20 @@ a {
   margin: 0;
 }
 
-.quick-access__grid,
 .areas__grid,
-.resource-group__grid {
+.resource-grid {
   display: grid;
   gap: 16px;
 }
 
-.quick-access__grid,
 .areas__grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.quick-card,
+.resource-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .area-card,
 .resource-card {
   padding: 20px;
@@ -288,33 +280,34 @@ a {
   background: rgba(15, 42, 89, 0.92);
 }
 
-.quick-card__meta,
-.resource-card__top,
+.area-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.area-card.is-active {
+  border-color: rgba(124, 58, 237, 0.55);
+  background: rgba(18, 45, 96, 0.98);
+}
+
 .area-card__header,
-.resource-group__header {
+.resource-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.quick-card h3,
-.area-card h3,
-.resource-card h4,
-.resource-group h3 {
-  margin: 12px 0 8px;
-}
-
-.quick-card h3,
 .area-card h3,
 .resource-card h4 {
+  margin: 0;
   font-size: 1.05rem;
 }
 
 .pill,
 .status,
-.area-card__count,
-.resource-group__count {
+.area-card__count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -330,64 +323,24 @@ a {
   background: var(--accent-soft);
 }
 
-.pill--soft {
-  color: #e6dcff;
-  background: var(--accent-soft);
-}
-
 .status {
   color: #dffbe9;
   background: rgba(115, 240, 168, 0.16);
   text-transform: capitalize;
 }
 
-.area-card__count,
-.resource-group__count {
+.area-card__count {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.08);
 }
 
-.area-card__description,
-.resource-group__description {
-  margin: 0 0 16px;
-}
-
-.area-card__link {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.resource-groups {
-  display: grid;
-  gap: 20px;
-}
-
-.resource-group {
-  padding: 22px;
-  border-radius: var(--radius-xl);
-  background: rgba(10, 33, 72, 0.88);
-}
-
-.resource-group__label {
-  margin: 0 0 4px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.74rem;
-}
-
-.resource-group h3 {
+.area-card__description {
   margin: 0;
-  font-size: 1.35rem;
 }
 
-.resource-group__description {
-  margin-top: 8px;
-}
-
-.resource-group__grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 16px;
+.area-card__button {
+  margin-top: auto;
+  width: 100%;
 }
 
 .resource-card {
@@ -442,15 +395,13 @@ a {
 
 @media (max-width: 980px) {
   .topbar,
-  .section-heading,
-  .resource-group__header {
+  .section-heading {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .quick-access__grid,
   .areas__grid,
-  .resource-group__grid {
+  .resource-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -463,7 +414,6 @@ a {
 
   .topbar,
   .section,
-  .resource-group,
   .access-gate__panel,
   .hero {
     padding: 20px;
