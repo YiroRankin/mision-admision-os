@@ -1,0 +1,97 @@
+{
+  "areas": [
+    {
+      "id": "comercial",
+      "nombre": "Comercial",
+      "descripcion": "Herramientas y recursos para ventas, cotización y gestión comercial",
+      "recursos": [
+        {
+          "id": "contratos",
+          "nombre": "Contratos",
+          "tipo": "App",
+          "descripcion": "Generación, gestión y consulta de contratos comerciales",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        },
+        {
+          "id": "cotizador",
+          "nombre": "Cotizador",
+          "tipo": "App",
+          "descripcion": "Herramienta para cotización de cursos y servicios",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        }
+      ]
+    },
+    {
+      "id": "operaciones",
+      "nombre": "Operaciones",
+      "descripcion": "Herramientas para control, seguimiento y ejecución operativa",
+      "recursos": [
+        {
+          "id": "folios",
+          "nombre": "Folios",
+          "tipo": "App",
+          "descripcion": "Gestión y seguimiento de folios operativos",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        }
+      ]
+    },
+    {
+      "id": "identidad",
+      "nombre": "Identidad y Crecimiento",
+      "descripcion": "Recursos de marca, comunicación y desarrollo institucional",
+      "recursos": []
+    },
+    {
+      "id": "general",
+      "nombre": "General",
+      "descripcion": "Documentos, procesos y recursos compartidos",
+      "recursos": [
+        {
+          "id": "documentos",
+          "nombre": "Documentos",
+          "tipo": "Recurso",
+          "descripcion": "Acceso a documentos institucionales",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        },
+        {
+          "id": "procesos",
+          "nombre": "Procesos",
+          "tipo": "Recurso",
+          "descripcion": "Lineamientos y procedimientos operativos",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        },
+        {
+          "id": "formatos",
+          "nombre": "Formatos",
+          "tipo": "Recurso",
+          "descripcion": "Formatos de uso común",
+          "link": "",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "",
+          "estatus": "activo"
+        }
+      ]
+    }
+  ]
+}
