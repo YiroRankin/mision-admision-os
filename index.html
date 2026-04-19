@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Misión Admisión OS</title>
+    <meta
+      name="description"
+      content="Portal interno de acceso a herramientas, procesos y recursos de Misión Admisión."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="access-gate" id="accessGate" aria-labelledby="accessTitle">
+      <div class="access-gate__panel">
+        <p class="eyebrow">Acceso interno</p>
+        <h1 id="accessTitle">Misión Admisión OS</h1>
+        <p class="access-gate__copy">
+          El sistema operativo interno para centralizar herramientas, procesos y recursos clave.
+        </p>
+        <button class="primary-button" id="enterButton" type="button">
+          Entrar al sistema
+        </button>
+      </div>
+    </div>
+
+    <div class="page-shell is-hidden" id="pageShell">
+      <header class="topbar">
+        <div>
+          <p class="brand-kicker">Misión Admisión</p>
+          <p class="brand-title">OS</p>
+        </div>
+        <nav class="topbar__nav" aria-label="Navegación principal">
+          <a href="#quickAccess">Accesos rápidos</a>
+          <a href="#areas">Áreas</a>
+          <a href="#resources">Recursos</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero__backdrop" aria-hidden="true">
+            <span class="orbit orbit--one"></span>
+            <span class="orbit orbit--two"></span>
+            <span class="orbit orbit--three"></span>
+            <span class="glow glow--one"></span>
+            <span class="glow glow--two"></span>
+          </div>
+
+          <div class="hero__content">
+            <p class="eyebrow">Centro operativo interno</p>
+            <h1>Misión Admisión OS</h1>
+            <p class="hero__subtitle">El sistema operativo de Misión Admisión</p>
+            <p class="hero__description">
+              Un punto único de entrada para consultar herramientas, procesos, documentos y recursos
+              compartidos, organizados por área para operar con claridad y escalar con orden.
+            </p>
+
+            <div class="hero__actions">
+              <a class="primary-button" href="#quickAccess">Explorar accesos</a>
+              <a class="secondary-button" href="#areas">Ver áreas</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-access section" id="quickAccess">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Inicio rápido</p>
+              <h2>Accesos rápidos</h2>
+            </div>
+            <p class="section-heading__text">
+              Lo más importante para arrancar el día sin tener que buscar en varios lugares.
+            </p>
+          </div>
+          <div class="quick-access__grid" id="quickAccessGrid"></div>
+        </section>
+
+        <section class="areas section" id="areas">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mapa del sistema</p>
+              <h2>Áreas</h2>
+            </div>
+            <p class="section-heading__text">
+              Cada área agrupa las herramientas y recursos que sostienen la operación.
+            </p>
+          </div>
+          <div class="areas__grid" id="areasGrid"></div>
+        </section>
+
+        <section class="resources section" id="resources">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Catálogo inicial</p>
+              <h2>Recursos</h2>
+            </div>
+            <p class="section-heading__text">
+              Primera versión del catálogo cargada desde JSON para que el portal crezca con orden.
+            </p>
+          </div>
+          <div class="resource-groups" id="resourceGroups"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="quickAccessCardTemplate">
+      <article class="quick-card">
+        <div class="quick-card__meta">
+          <span class="pill"></span>
+          <span class="quick-card__type"></span>
+        </div>
+        <h3></h3>
+        <p></p>
+      </article>
+    </template>
+
+    <template id="areaCardTemplate">
+      <article class="area-card">
+        <div class="area-card__header">
+          <h3></h3>
+          <span class="area-card__count"></span>
+        </div>
+        <p class="area-card__description"></p>
+        <a class="area-card__link" href="#resources">Ver recursos</a>
+      </article>
+    </template>
+
+    <template id="resourceGroupTemplate">
+      <section class="resource-group">
+        <div class="resource-group__header">
+          <div>
+            <p class="resource-group__label"></p>
+            <h3></h3>
+          </div>
+          <span class="resource-group__count"></span>
+        </div>
+        <p class="resource-group__description"></p>
+        <div class="resource-group__grid"></div>
+      </section>
+    </template>
+
+    <template id="resourceCardTemplate">
+      <article class="resource-card">
+        <div class="resource-card__top">
+          <span class="pill pill--soft"></span>
+          <span class="status"></span>
+        </div>
+        <h4></h4>
+        <p class="resource-card__description"></p>
+        <dl class="resource-card__meta">
+          <div>
+            <dt>Tipo</dt>
+            <dd class="resource-type"></dd>
+          </div>
+          <div>
+            <dt>Responsable</dt>
+            <dd class="resource-owner"></dd>
+          </div>
+        </dl>
+        <div class="resource-card__actions">
+          <a class="resource-link is-disabled" href="#" aria-disabled="true">Abrir recurso</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
