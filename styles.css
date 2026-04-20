@@ -84,7 +84,7 @@ a {
 }
 
 .access-gate__panel h1,
-.brand-title {
+.hero h1 {
   font-family: "Orbitron", "Inter", sans-serif;
   letter-spacing: 0.04em;
 }
@@ -106,59 +106,6 @@ a {
   padding: 24px 0 56px;
 }
 
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 20px;
-  padding: 16px 20px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: rgba(8, 26, 58, 0.52);
-  backdrop-filter: blur(18px);
-}
-
-.brand-kicker {
-  margin: 0 0 2px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.74rem;
-}
-
-.brand-title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--cyan);
-}
-
-.topbar__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.topbar__nav a,
-.resource-link {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.topbar__nav a {
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: var(--text-secondary);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.topbar__nav a:hover,
-.topbar__nav a:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
-}
-
 .hero,
 .section,
 .area-card,
@@ -168,9 +115,13 @@ a {
 }
 
 .hero {
-  display: grid;
-  gap: 18px;
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
   border-radius: 28px;
   background:
     linear-gradient(135deg, rgba(9, 24, 54, 0.96), rgba(10, 33, 72, 0.9)),
@@ -179,31 +130,70 @@ a {
   backdrop-filter: blur(16px);
 }
 
-.hero--banner {
-  min-height: auto;
-}
-
-.hero__banner-frame {
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(4, 12, 33, 0.35);
 }
 
-.hero__banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
+.orbit,
+.glow {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.orbit {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.orbit--one {
+  width: 680px;
+  height: 680px;
+  right: -180px;
+  top: -180px;
+  transform: rotate(18deg);
+}
+
+.orbit--two {
+  width: 480px;
+  height: 480px;
+  right: 60px;
+  top: 10px;
+  border-color: rgba(124, 58, 237, 0.28);
+  transform: rotate(-18deg);
+}
+
+.orbit--three {
+  width: 820px;
+  height: 820px;
+  left: -390px;
+  bottom: -560px;
+  border-color: rgba(109, 247, 255, 0.16);
+}
+
+.glow--one {
+  width: 500px;
+  height: 500px;
+  left: -160px;
+  top: 60px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.26), transparent 70%);
+}
+
+.glow--two {
+  width: 320px;
+  height: 320px;
+  right: 60px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(109, 247, 255, 0.2), transparent 70%);
 }
 
 .hero__content {
-  max-width: 720px;
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
 }
 
-.hero__content--compact {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
+.hero__content--centered {
   text-align: center;
 }
 
@@ -216,7 +206,24 @@ a {
   font-weight: 700;
 }
 
-.hero__description,
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 4.2rem);
+  line-height: 1;
+}
+
+.hero h1 span {
+  color: var(--cyan);
+}
+
+.hero__subtitle {
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .section-heading__text,
 .area-card__description,
 .resource-card__description {
@@ -224,18 +231,12 @@ a {
   line-height: 1.6;
 }
 
-.hero__description {
-  max-width: 620px;
-  margin: 0 auto;
-  font-size: 0.98rem;
-}
-
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .primary-button,
@@ -440,7 +441,6 @@ a {
 }
 
 @media (max-width: 980px) {
-  .topbar,
   .section-heading {
     flex-direction: column;
     align-items: flex-start;
@@ -453,7 +453,8 @@ a {
 }
 
 @media (max-width: 720px) {
-  body::before {
+  body::before,
+  .hero__backdrop {
     display: none;
   }
 
@@ -462,20 +463,17 @@ a {
     padding-top: 14px;
   }
 
-  .topbar,
   .section,
   .access-gate__panel,
   .hero {
     padding: 20px;
   }
 
-  .hero__actions,
-  .topbar__nav {
+  .hero__actions {
     width: 100%;
   }
 
-  .hero__actions > *,
-  .topbar__nav a {
+  .hero__actions > * {
     flex: 1 1 auto;
   }
 
