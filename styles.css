@@ -1,15 +1,16 @@
 :root {
   --bg: #081a3a;
-  --surface: #0f2a59;
-  --surface-soft: #133163;
-  --border: rgba(255, 255, 255, 0.1);
+  --surface: rgba(15, 42, 89, 0.82);
+  --surface-soft: rgba(19, 49, 99, 0.94);
+  --border: rgba(255, 255, 255, 0.12);
   --text-primary: #f7f9ff;
   --text-secondary: #c8d5f3;
   --text-muted: #9eb3de;
   --accent: #7c3aed;
-  --accent-soft: rgba(124, 58, 237, 0.14);
+  --accent-soft: rgba(124, 58, 237, 0.16);
+  --cyan: #6df7ff;
   --success: #73f0a8;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
   --radius-xl: 24px;
   --radius-lg: 18px;
   --radius-md: 14px;
@@ -29,7 +30,22 @@ body {
   min-height: 100vh;
   font-family: "Inter", system-ui, sans-serif;
   color: var(--text-primary);
-  background: linear-gradient(180deg, #0f2f67 0%, #0a2148 38%, #081a3a 100%);
+  background:
+    radial-gradient(circle at top left, rgba(124, 58, 237, 0.2), transparent 26%),
+    radial-gradient(circle at top right, rgba(109, 247, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, #113873 0%, #0a2148 36%, #081a3a 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 88%);
 }
 
 img {
@@ -53,6 +69,7 @@ a {
   place-items: center;
   padding: 24px;
   background: rgba(5, 13, 30, 0.72);
+  backdrop-filter: blur(20px);
   z-index: 20;
 }
 
@@ -61,9 +78,16 @@ a {
   padding: 32px;
   border-radius: 24px;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(12, 34, 72, 0.98), rgba(10, 26, 57, 0.98));
   box-shadow: var(--shadow);
   text-align: center;
+}
+
+.access-gate__panel h1,
+.brand-title,
+.hero h1 {
+  font-family: "Orbitron", "Inter", sans-serif;
+  letter-spacing: 0.04em;
 }
 
 .access-gate__panel h1 {
@@ -92,7 +116,8 @@ a {
   padding: 16px 20px;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(8, 26, 58, 0.55);
+  background: rgba(8, 26, 58, 0.52);
+  backdrop-filter: blur(18px);
 }
 
 .brand-kicker {
@@ -106,7 +131,8 @@ a {
 .brand-title {
   margin: 0;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--cyan);
 }
 
 .topbar__nav {
@@ -125,11 +151,12 @@ a {
   padding: 8px 12px;
   border-radius: 10px;
   color: var(--text-secondary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .topbar__nav a:hover,
 .topbar__nav a:focus-visible {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
 }
 
@@ -142,23 +169,87 @@ a {
 }
 
 .hero {
-  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
   display: flex;
   align-items: center;
-  padding: 32px;
+  padding: 36px;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(16, 42, 89, 0.96), rgba(10, 33, 72, 0.96));
+  background:
+    linear-gradient(135deg, rgba(9, 24, 54, 0.96), rgba(10, 33, 72, 0.9)),
+    radial-gradient(circle at left center, rgba(124, 58, 237, 0.28), transparent 28%),
+    radial-gradient(circle at right center, rgba(109, 247, 255, 0.24), transparent 24%);
 }
 
 .hero__content {
+  position: relative;
+  z-index: 2;
   max-width: 720px;
+}
+
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.orbit,
+.glow {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.orbit {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.orbit--one {
+  width: 680px;
+  height: 680px;
+  right: -180px;
+  top: -180px;
+  transform: rotate(18deg);
+}
+
+.orbit--two {
+  width: 480px;
+  height: 480px;
+  right: 60px;
+  top: 10px;
+  border-color: rgba(124, 58, 237, 0.28);
+  transform: rotate(-18deg);
+}
+
+.orbit--three {
+  width: 820px;
+  height: 820px;
+  left: -390px;
+  bottom: -560px;
+  border-color: rgba(109, 247, 255, 0.16);
+}
+
+.glow--one {
+  width: 500px;
+  height: 500px;
+  left: -160px;
+  top: 60px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.26), transparent 70%);
+}
+
+.glow--two {
+  width: 320px;
+  height: 320px;
+  right: 60px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(109, 247, 255, 0.2), transparent 70%);
 }
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--text-muted);
+  color: var(--cyan);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   font-size: 0.74rem;
   font-weight: 700;
 }
@@ -208,19 +299,22 @@ a {
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
 }
 
 .primary-button,
 .area-card__button {
   border: 0;
   color: var(--text-primary);
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), #4f7bff);
+  box-shadow: 0 12px 28px rgba(89, 72, 255, 0.3);
 }
 
 .secondary-button {
   border: 1px solid var(--border);
   color: var(--text-primary);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
 }
 
 .primary-button:hover,
@@ -231,14 +325,15 @@ a {
 .area-card__button:focus-visible,
 .resource-link:not(.is-disabled):hover,
 .resource-link:not(.is-disabled):focus-visible {
-  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .section {
   margin-top: 20px;
   padding: 24px;
   border-radius: var(--radius-xl);
-  background: rgba(10, 33, 72, 0.72);
+  background: rgba(10, 33, 72, 0.68);
+  backdrop-filter: blur(16px);
 }
 
 .section-heading {
@@ -277,7 +372,7 @@ a {
 .resource-card {
   padding: 20px;
   border-radius: var(--radius-lg);
-  background: rgba(15, 42, 89, 0.92);
+  background: linear-gradient(180deg, rgba(15, 42, 89, 0.96), rgba(13, 35, 74, 0.96));
 }
 
 .area-card {
@@ -288,7 +383,7 @@ a {
 
 .area-card.is-active {
   border-color: rgba(124, 58, 237, 0.55);
-  background: rgba(18, 45, 96, 0.98);
+  background: linear-gradient(180deg, rgba(18, 45, 96, 0.98), rgba(14, 37, 78, 0.98));
 }
 
 .area-card__header,
@@ -407,6 +502,11 @@ a {
 }
 
 @media (max-width: 720px) {
+  body::before,
+  .hero__backdrop {
+    display: none;
+  }
+
   .page-shell {
     width: min(calc(100% - 20px), var(--max-width));
     padding-top: 14px;
