@@ -46,18 +46,31 @@
     {
       "id": "operaciones",
       "nombre": "Operaciones",
-      "descripcion": "Herramientas para control, seguimiento y ejecución operativa",
+      "descripcion": "Herramientas para control, seguimiento y ejecución operativa.",
       "recursos": [
         {
           "id": "folios",
           "nombre": "Folios",
           "tipo": "App",
-          "descripcion": "Gestión y seguimiento de folios operativos",
-          "link": "",
+          "descripcion": "Portal para subir folios de alumnos",
+          "link": "https://script.google.com/macros/s/AKfycbwt2zKpF3raU6ICHpa4YnEaEEBMh38MytYxMX9u5cg7iBmKfzt6vG7tIh-5LGk90C1m/exec",
           "procedimiento": "",
           "resumen": "",
-          "responsable": "",
-          "estatus": "activo"
+          "responsable": "Coordinación Académica",
+          "estatus": "activo",
+          "botonTexto": "Abrir aplicación"
+        },
+        {
+          "id": "validacion-folios",
+          "nombre": "Validación de folios",
+          "tipo": "App",
+          "descripcion": "Portal para la validación de folios de alumnos",
+          "link": "https://script.google.com/macros/s/AKfycbwt2zKpF3raU6ICHpa4YnEaEEBMh38MytYxMX9u5cg7iBmKfzt6vG7tIh-5LGk90C1m/exec?view=admin",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "Coordinación Académica",
+          "estatus": "activo",
+          "botonTexto": "Abrir aplicación"
         }
       ]
     },
@@ -70,8 +83,20 @@
     {
       "id": "general",
       "nombre": "General",
-      "descripcion": "Documentos, procesos y recursos compartidos",
+      "descripcion": "Documentos, procesos y recursos compartidos.",
       "recursos": [
+        {
+          "id": "looker-fechas",
+          "nombre": "Looker de fechas",
+          "tipo": "Documento",
+          "descripcion": "Repositorio con fechas de cursos",
+          "link": "https://datastudio.google.com/u/0/reporting/007b0155-adea-4200-961d-4d93880fdaed/page/zrtqF",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "Coordinación de Operacion y Evaluación",
+          "estatus": "activo",
+          "botonTexto": "Acceder al Looker"
+        },
         {
           "id": "documentos",
           "nombre": "Documentos",
