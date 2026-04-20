@@ -63,13 +63,15 @@ function buildResourceCard(resource, areaNombre) {
   const fragment = resourceCardTemplate.content.cloneNode(true);
 
   fragment.querySelector(".pill").textContent = areaNombre;
-  fragment.querySelector(".status").textContent = resource.estatus || "activo";
+  fragment.querySelector(".status").textContent = (resource.estatus || "activo").toLowerCase();
   fragment.querySelector("h4").textContent = resource.nombre;
   fragment.querySelector(".resource-card__description").textContent = resource.descripcion || "Sin descripción disponible.";
   fragment.querySelector(".resource-type").textContent = resource.tipo || "Recurso";
   fragment.querySelector(".resource-owner").textContent = resource.responsable || "Por definir";
 
   const link = fragment.querySelector(".resource-link");
+  link.textContent = resource.botonTexto || "Abrir recurso";
+
   if (resource.link) {
     link.classList.remove("is-disabled");
     link.removeAttribute("aria-disabled");
