@@ -3,29 +3,43 @@
     {
       "id": "comercial",
       "nombre": "Comercial",
-      "descripcion": "Herramientas y recursos para ventas, cotización y gestión comercial",
+      "descripcion": "Herramientas y proyectos para la operación comercial y el seguimiento con clientes.",
       "recursos": [
         {
-          "id": "contratos",
-          "nombre": "Contratos",
+          "id": "contrato-prestacion-servicios",
+          "nombre": "Contrato de prestación de servicios",
           "tipo": "App",
-          "descripcion": "Generación, gestión y consulta de contratos comerciales",
-          "link": "",
+          "descripcion": "Proceso para recolección de firma en contratos con clientes",
+          "link": "https://script.google.com/a/macros/misionadmision.com/s/AKfycbyARhu-ZvBA1F4XroK6Ybv_bHEayT6tMc1HHRjIm0qWV8sEYdTVi_6NAqs7rIneZ_Ld/exec",
           "procedimiento": "",
           "resumen": "",
-          "responsable": "",
-          "estatus": "activo"
+          "responsable": "Teresa Vera",
+          "estatus": "pruebas",
+          "botonTexto": "Abrir aplicación"
         },
         {
-          "id": "cotizador",
-          "nombre": "Cotizador",
+          "id": "cotizador-cursos",
+          "nombre": "Cotizador de cursos",
           "tipo": "App",
-          "descripcion": "Herramienta para cotización de cursos y servicios",
-          "link": "",
+          "descripcion": "Aplicación para la generación de cotizaciones",
+          "link": "https://yirorankin.github.io/CotizadorMA/",
           "procedimiento": "",
           "resumen": "",
-          "responsable": "",
-          "estatus": "activo"
+          "responsable": "Especialistas Académicas",
+          "estatus": "activo",
+          "botonTexto": "Abrir aplicación"
+        },
+        {
+          "id": "panel-cotizaciones",
+          "nombre": "Panel de Cotizaciones",
+          "tipo": "App",
+          "descripcion": "Aplicación para el monitoreo de cotizaciones de cursos",
+          "link": "https://yirorankin.github.io/CotizadorMA/admin/",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "Teresa Vera",
+          "estatus": "activo",
+          "botonTexto": "Abrir aplicación"
         }
       ]
     },
