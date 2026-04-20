@@ -241,7 +241,8 @@ a {
 
 .primary-button,
 .secondary-button,
-.area-card__button {
+.area-card__button,
+.resource-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -262,7 +263,8 @@ a {
   box-shadow: 0 12px 28px rgba(89, 72, 255, 0.3);
 }
 
-.secondary-button {
+.secondary-button,
+.resource-link {
   border: 1px solid var(--border);
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.04);
@@ -425,14 +427,7 @@ a {
 }
 
 .resource-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
   width: 100%;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  font-weight: 700;
 }
 
 .resource-link.is-disabled {
