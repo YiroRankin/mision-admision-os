@@ -25,10 +25,18 @@ html {
   scroll-behavior: smooth;
 }
 
+body,
+button,
+input,
+textarea,
+select,
+a {
+  font-family: "Montserrat", system-ui, sans-serif;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Inter", system-ui, sans-serif;
   color: var(--text-primary);
   background:
     radial-gradient(circle at top left, rgba(124, 58, 237, 0.2), transparent 26%),
@@ -83,9 +91,8 @@ a {
   text-align: center;
 }
 
-.access-gate__panel h1,
 .hero h1 {
-  font-family: "Orbitron", "Inter", sans-serif;
+  font-family: "Orbitron", "Montserrat", system-ui, sans-serif;
   letter-spacing: 0.04em;
 }
 
