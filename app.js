@@ -1,8 +1,11 @@
 const ACCESS_KEY = "maos-access";
+const ACCESS_HASH = "2119bb91fc109ad79f16a921f67e0f12b635cd576838da32395e0be75006a64c";
 
 const accessGate = document.getElementById("accessGate");
 const pageShell = document.getElementById("pageShell");
-const enterButton = document.getElementById("enterButton");
+const accessForm = document.getElementById("accessForm");
+const accessPassword = document.getElementById("accessPassword");
+const accessError = document.getElementById("accessError");
 
 const areasGrid = document.getElementById("areasGrid");
 const resourceGrid = document.getElementById("resourceGrid");
@@ -15,10 +18,24 @@ const resourceCardTemplate = document.getElementById("resourceCardTemplate");
 let currentAreas = [];
 let selectedAreaId = null;
 
+async function getSha256Hex(value) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(value.trim());
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
 function setAccessGranted() {
   localStorage.setItem(ACCESS_KEY, "true");
   accessGate.classList.add("is-hidden");
   pageShell.classList.remove("is-hidden");
+}
+
+function setAccessDenied() {
+  accessError.textContent = "Contraseña incorrecta. Inténtalo de nuevo.";
+  accessPassword.value = "";
+  accessPassword.focus();
 }
 
 function bootstrapAccess() {
@@ -27,9 +44,21 @@ function bootstrapAccess() {
   if (hasAccess) {
     accessGate.classList.add("is-hidden");
     pageShell.classList.remove("is-hidden");
+    return;
   }
 
-  enterButton.addEventListener("click", setAccessGranted);
+  accessForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    accessError.textContent = "";
+
+    const typedHash = await getSha256Hex(accessPassword.value);
+
+    if (typedHash === ACCESS_HASH) {
+      setAccessGranted();
+    } else {
+      setAccessDenied();
+    }
+  });
 }
 
 function renderAreas() {
