@@ -1,5 +1,7 @@
 const ACCESS_KEY = "maos-access";
+const ACCESS_EXPIRES_KEY = "maos-access-expires-at";
 const ACCESS_HASH = "2119bb91fc109ad79f16a921f67e0f12b635cd576838da32395e0be75006a64c";
+const SESSION_DURATION_MS = 30 * 60 * 1000;
 
 const accessGate = document.getElementById("accessGate");
 const pageShell = document.getElementById("pageShell");
@@ -26,10 +28,36 @@ async function getSha256Hex(value) {
   return hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
+function getSessionExpiration() {
+  return Number(localStorage.getItem(ACCESS_EXPIRES_KEY) || 0);
+}
+
+function isSessionValid() {
+  const hasAccess = localStorage.getItem(ACCESS_KEY) === "true";
+  const expiresAt = getSessionExpiration();
+  return hasAccess && expiresAt > Date.now();
+}
+
+function refreshSessionExpiration() {
+  if (!isSessionValid()) return;
+  localStorage.setItem(ACCESS_EXPIRES_KEY, String(Date.now() + SESSION_DURATION_MS));
+}
+
 function setAccessGranted() {
   localStorage.setItem(ACCESS_KEY, "true");
+  localStorage.setItem(ACCESS_EXPIRES_KEY, String(Date.now() + SESSION_DURATION_MS));
   accessGate.classList.add("is-hidden");
   pageShell.classList.remove("is-hidden");
+}
+
+function closeSession(message = "") {
+  localStorage.removeItem(ACCESS_KEY);
+  localStorage.removeItem(ACCESS_EXPIRES_KEY);
+  pageShell.classList.add("is-hidden");
+  accessGate.classList.remove("is-hidden");
+  accessPassword.value = "";
+  accessError.textContent = message;
+  accessPassword.focus();
 }
 
 function setAccessDenied() {
@@ -38,13 +66,28 @@ function setAccessDenied() {
   accessPassword.focus();
 }
 
-function bootstrapAccess() {
-  const hasAccess = localStorage.getItem(ACCESS_KEY) === "true";
+function startSessionWatch() {
+  const activityEvents = ["click", "keydown", "scroll", "touchstart"];
 
-  if (hasAccess) {
+  activityEvents.forEach((eventName) => {
+    window.addEventListener(eventName, refreshSessionExpiration, { passive: true });
+  });
+
+  setInterval(() => {
+    const hasAccess = localStorage.getItem(ACCESS_KEY) === "true";
+    if (hasAccess && !isSessionValid()) {
+      closeSession("Tu sesión expiró. Ingresa nuevamente la contraseña.");
+    }
+  }, 30 * 1000);
+}
+
+function bootstrapAccess() {
+  if (isSessionValid()) {
+    refreshSessionExpiration();
     accessGate.classList.add("is-hidden");
     pageShell.classList.remove("is-hidden");
-    return;
+  } else {
+    closeSession();
   }
 
   accessForm.addEventListener("submit", async (event) => {
@@ -59,6 +102,8 @@ function bootstrapAccess() {
       setAccessDenied();
     }
   });
+
+  startSessionWatch();
 }
 
 function renderAreas() {
