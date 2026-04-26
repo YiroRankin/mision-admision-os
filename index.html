@@ -22,9 +22,25 @@
         <p class="eyebrow">Acceso interno</p>
         <h1 id="accessTitle">Misión Admisión OS</h1>
         <p class="access-gate__copy">
-          El sistema operativo interno para centralizar herramientas, procesos y recursos clave.
+          Ingresa la contraseña compartida para acceder al portal interno.
         </p>
-        <button class="primary-button" id="enterButton" type="button">Entrar al sistema</button>
+        <form class="access-form" id="accessForm">
+          <label class="access-form__label" for="accessPassword">Contraseña</label>
+          <input
+            class="access-form__input"
+            id="accessPassword"
+            name="accessPassword"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Escribe la contraseña"
+            required
+          />
+          <p class="access-form__error" id="accessError" role="alert" aria-live="polite"></p>
+          <button class="primary-button" id="enterButton" type="submit">Entrar al sistema</button>
+        </form>
+        <p class="access-gate__note">
+          Acceso básico para uso interno. No compartas esta contraseña fuera del equipo.
+        </p>
       </div>
     </div>
 
