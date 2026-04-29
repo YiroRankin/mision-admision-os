@@ -1,7 +1,7 @@
 const ACCESS_KEY = "maos-access";
 const ACCESS_EXPIRES_KEY = "maos-access-expires-at";
 const ACCESS_HASH = "2119bb91fc109ad79f16a921f67e0f12b635cd576838da32395e0be75006a64c";
-const SESSION_DURATION_MS = 30 * 60 * 1000;
+const SESSION_DURATION_MS = 4 * 60 * 60 * 1000;
 
 const accessGate = document.getElementById("accessGate");
 const pageShell = document.getElementById("pageShell");
