@@ -18,7 +18,6 @@ Construir una primera versión navegable del portal con:
 
 - Comercial
 - Operaciones
-- Identidad y Crecimiento
 - General
 
 ## Recursos iniciales contemplados
@@ -26,6 +25,8 @@ Construir una primera versión navegable del portal con:
 ### Comercial
 - Contratos
 - Cotizador
+- Panel de Cotizaciones
+- Ubica tu campus
 
 ### Operaciones
 - Folios

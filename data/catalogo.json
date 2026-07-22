@@ -40,6 +40,18 @@
           "responsable": "Teresa Vera",
           "estatus": "activo",
           "botonTexto": "Abrir aplicación"
+        },
+        {
+          "id": "ubica-tu-campus",
+          "nombre": "Ubica tu campus",
+          "tipo": "App",
+          "descripcion": "Aplicación para ubicar cercanía de campus para clientes",
+          "link": "https://script.google.com/macros/s/AKfycbzuUMMwdZ47s5rma64WSbRd4iSKA4U1WbV9IjLk3XjKK1Js6X5pXrRrJfffzIw3Hy-w/exec",
+          "procedimiento": "",
+          "resumen": "",
+          "responsable": "Yiro Rankin",
+          "estatus": "activo",
+          "botonTexto": "Abrir aplicación"
         }
       ]
     },
@@ -73,12 +85,6 @@
           "botonTexto": "Abrir aplicación"
         }
       ]
-    },
-    {
-      "id": "identidad",
-      "nombre": "Identidad y Crecimiento",
-      "descripcion": "Recursos de marca, comunicación y desarrollo institucional",
-      "recursos": []
     },
     {
       "id": "general",
